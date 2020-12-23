@@ -1,31 +1,37 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
+var express  = require('express');
+var app      = express();
+var port     = process.env.PORT || 8000;
+var mongoose = require('mongoose');
+var passport = require('passport');
+var flash    = require('connect-flash');
 
-const app = express();
+var morgan       = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser   = require('body-parser');
+var session      = require('express-session');
 
-var corsOptions = {
-  origin: "http://localhost:8081"
-};
+ // connect to our database
+mongoose.connect('mongodb://localhost/blog', {
+                    useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true
+})
+// pass passport for configuration
 
-app.use(cors(corsOptions));
+// set up our express application
+app.use(morgan('dev')); // log every request to the console
+app.use(cookieParser()); // read cookies (needed for auth)
+app.use(bodyParser()); // get information from html forms
 
-// parse requests of content-type - application/json
-app.use(bodyParser.json());
+app.set('view engine', 'ejs'); // set up ejs
+app.set('views', "./app/views");
+// required for passport
+app.use(session({ secret: 'ilovenodejs' })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
 
-// parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
+// routes 
+require('./app/routes.js')(app, passport); 
+require('./app/config/passport')(passport); 
 
-// simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
-});
-const db = require("./app/models");
-db.sequelize.sync();
-require("./app/routes/meme.routes")(app);
 
-// set port, listen for requests
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
-});
+app.listen(port);

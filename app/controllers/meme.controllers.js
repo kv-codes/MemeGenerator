@@ -27,10 +27,9 @@ exports.create = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Meme."
+          err.message || "Some error occurred while creating the Tutorial."
       });
     });
-
   
 };
 
@@ -46,12 +45,10 @@ exports.findAll = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving memes."
+            err.message || "Some error occurred while retrieving tutorials."
         });
       });
-  
-  
-};
+  };
 
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {
@@ -63,10 +60,9 @@ exports.findOne = (req, res) => {
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving Meme with id=" + id
+          message: "Error retrieving Tutorial with id=" + id
         });
       });
-  
   
 };
 
@@ -80,20 +76,19 @@ exports.update = (req, res) => {
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Meme was updated successfully."
+            message: "Tutorial was updated successfully."
           });
         } else {
           res.send({
-            message: `Cannot update Meme with id=${id}. Maybe Meme was not found or req.body is empty!`
+            message: `Cannot update Tutorial with id=${id}. Maybe Tutorial was not found or req.body is empty!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating Meme with id=" + id
+          message: "Error updating Tutorial with id=" + id
         });
       });
-  
   
 };
 
@@ -107,20 +102,19 @@ exports.delete = (req, res) => {
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Meme was deleted successfully!"
+            message: "Tutorial was deleted successfully!"
           });
         } else {
           res.send({
-            message: `Cannot delete Meme with id=${id}. Maybe Tutorial was not found!`
+            message: `Cannot delete Tutorial with id=${id}. Maybe Tutorial was not found!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Could not delete Meme with id=" + id
+          message: "Could not delete Tutorial with id=" + id
         });
       });
-  
   
 };
 
@@ -131,12 +125,12 @@ exports.deleteAll = (req, res) => {
         truncate: false
       })
         .then(nums => {
-          res.send({ message: `${nums} Memes were deleted successfully!` });
+          res.send({ message: `${nums} Tutorials were deleted successfully!` });
         })
         .catch(err => {
           res.status(500).send({
             message:
-              err.message || "Some error occurred while removing all memes."
+              err.message || "Some error occurred while removing all tutorials."
           });
         });
   
@@ -151,7 +145,7 @@ exports.findAllPublished = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving memes."
+          err.message || "Some error occurred while retrieving tutorials."
       });
     });
   
