@@ -1,8 +1,21 @@
 module.exports = function(app, passport) {
     // =======================HOME-PAGE ===============================
-     app.get('/', function(req, res) {
-    res.render('index.ejs'); // load the index.ejs file
-    });
+     //app.get('/', function(req, res) {
+    //res.render('index.ejs'); // load the index.ejs file
+    //});
+    app.get('/', (req, res)=>{ 
+  
+        // The render method takes the name of the html 
+        // page to be rendered as input. 
+        // This page should be in views folder  
+        // in the root directory. 
+        var data = {name:'Akashdeep', 
+            hobbies:['playing basketball', 'playing chess', 'cycling']} 
+          
+        res.render('home.ejs', {data:data}); 
+        }); 
+          
+
     // ==========================LOGIN ===============================
     app.get('/login', function(req, res) {
     res.render('login.ejs', { message: req.flash('loginMessage') }); 
@@ -48,7 +61,11 @@ module.exports = function(app, passport) {
     // if user is authenticated in the session, carry on 
     if (req.isAuthenticated())
     return next();
-    
+
     // if they aren't redirect them to the home page
     res.redirect('/');
     }
+
+
+          
+   

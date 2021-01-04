@@ -1,0 +1,99 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Home Page</title> 
+
+    <style type="text/css" media="screen"> 
+        body { 
+            background-color: skyblue; 
+            text-decoration-color: white; 
+            font-size:5em;          
+        }
+        form {border: 6px solid skyblue; width: 50%; margin:auto; padding: 5px; border-radius: 10px;}
+
+input[type=text], input[type=password] {
+  width: 55%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 3px solid #ccc;
+  border-radius: 15px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  border-radius: 25px;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.container {
+  padding: 16px;
+  font-size: 20px;
+  width: 75%;
+}
+
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+}
+
+    </style> 
+</head> 
+  
+<body> 
+    <br/>
+
+    </div>
+    <div class="card text-center">
+
+        <div class="card-body">
+          <h1 class="card-title"><b>Welcome to the Meme Generator!</b></h1>
+          <h2 class="card-text"><b>Create | Laugh | Enjoy</b></h2>
+          <div class = "logo"><img src="img/goofyFace.jpg"/></div>
+          <div><h4 class="card-text"><b>Login with Google</b></h4></div>
+          
+          <form action="/action_page.php" method="post">
+            <div class="container">
+              <label for="uname"><b>Username</b></label>
+              <input type="text" placeholder="Enter Username" name="uname" required>
+              <br>
+          
+              <label for="psw"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" name="psw" required>
+              
+              <button type="submit">Login</button>
+
+          </form>
+                    
+        </div>
+      </div>
+    
+      
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body> 
+  
+</html> 
